@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import HomeScreen from '../screens/HomeScreen';
 
-const HomeRoute = () => <SafeAreaView><Text>Home</Text></SafeAreaView> ;
+const HomeRoute = () => <HomeScreen />;
 const SearchRoute = () => <SafeAreaView><Text>Search</Text></SafeAreaView> ;
 const AccountRoute = () => <SafeAreaView><Text>Account</Text></SafeAreaView> ;
 
@@ -11,7 +12,7 @@ export const BottomTabNavigator = () => {
     const [routes] = React.useState([
       { key: 'home', title: 'Favorites', focusedIcon: 'home', unfocusedIcon: 'home-outline'},
       { key: 'search', title: 'Search', focusedIcon: 'magnify' },
-      { key: 'account', title: 'Recents', focusedIcon: 'account' },
+      { key: 'account', title: 'Account', focusedIcon: 'account' },
     ]);
 
     const renderScene = BottomNavigation.SceneMap({

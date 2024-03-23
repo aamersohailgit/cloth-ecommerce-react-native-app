@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { SliderBox } from "react-native-image-slider-box";
-import { COLORS, SIZES } from "../../constants";
+import { COLORS, SIZES } from "../../../constants";
+import { useTheme } from "react-native-paper";
 
 const Carousel = () => {
+    const theme = useTheme();
     const images = ["https://source.unsplash.com/1024x768/?nature",
     "https://source.unsplash.com/1024x768/?water",
     "https://source.unsplash.com/1024x768/?girl",
@@ -27,8 +29,6 @@ export default Carousel;
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: "center",
-        paddingTop: SIZES.xSmall,
-        paddingBottom: SIZES.medium,
+        flex: 1,
     },
 });

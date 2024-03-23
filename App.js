@@ -11,10 +11,10 @@ import { customTheme } from './constants/theme';
 export default function App() {
   return (
     <SafeAreaProvider>
-      <PaperProvider>
+      <PaperProvider theme={customTheme}>
       <StatusBar style="auto" />
           <NavigationContainer>
-                <BottomTabNavigator />
+            <BottomTabNavigator />
           </NavigationContainer>
       </PaperProvider>
     </SafeAreaProvider>
