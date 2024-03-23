@@ -1,43 +1,72 @@
 import React from 'react';
-import { View, FlatList, StyleSheet, Dimensions } from 'react-native';
-import { Card, Title } from 'react-native-paper';
+import { View, FlatList, StyleSheet } from 'react-native';
 import ProductCardView from './ProductCardView';
+import { SIZES } from '../../../constants';
+import Headings from '../home/Headings';
 
 const ProductRow = () => {
     const products = [
         {
             id: 1,
-            title: "Product 1",
-            description: "This is product 1 description.",
+            name: 'Cotton T-Shirt',
+            description: 'A comfortable and breathable t-shirt made from 100% cotton.',
             image: "https://source.unsplash.com/1024x768/?muslimgirl",
+            supplier: 'Cloth Co.',
+            price: '19.99'
         },
         {
             id: 2,
-            title: "Product 2",
-            description: "This is product 2 description.",
+            name: 'Denim Jeans',
+            description: 'Classic denim jeans with a relaxed fit and durable construction.',
             image: "https://source.unsplash.com/1024x768/?Islamic-girl",
+            supplier: 'Cloth Co.',
+            price: '29.99',
+            currency: '$'
         },
         {
             id: 3,
-            title: "Product 3",
-            description: "This is product 3 description.",
-            image: "https://source.unsplash.com/1024x768/?headscarf",
-        }
+            name: 'Wool Sweater',
+            description: 'A cozy and warm sweater made from high-quality wool.',
+            image: 'https://source.unsplash.com/random/200x200/?sweater',
+            supplier: 'Cloth Co.',
+            price: '39.99',
+            currency: '$'
+        },
+        {
+            id: 4,
+            name: 'Leather Jacket',
+            description: 'A stylish and timeless leather jacket for a fashionable look.',
+            image: 'https://source.unsplash.com/random/200x200/?jacket',
+            supplier: 'Cloth Co.',
+            price: '79.99',
+            currency: '$'
+        },
+        {
+            id: 5,
+            name: 'Silk Scarf',
+            description: 'An elegant silk scarf to add a touch of luxury to any outfit.',
+            image: 'https://source.unsplash.com/random/200x200/?scarf',
+            supplier: 'Cloth Co.',
+            price: '24.99',
+            currency: '$'
+        },
     ];
 
-    const renderProduct = ({ item }) => (
+    const renderItem = ({ item }) => (
         <ProductCardView product={item} />
     );
 
     return (
         <View style={styles.container}>
-            <FlatList
-                data={products}
-                renderItem={renderProduct}
-                keyExtractor={(item) => item.id.toString()}
-                numColumns={2}
-                key={2}
-            />
+            <Headings />
+            <View style={{ padding: SIZES.xSmall, marginTop: SIZES.medium}}>
+                <FlatList
+                    data={products}
+                    renderItem={renderItem}
+                    horizontal
+                    contentContainerStyle={{columnGap:SIZES.medium}}
+                />
+            </View>
         </View>
     );
 };
@@ -46,12 +75,6 @@ export default ProductRow;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        marginHorizontal: 12,
-    },
-    card: {
-        flex: 1,
-        margin: 10,
-        width: Dimensions.get('window').width / 2 - 20,
+        marginBottom: SIZES.xxLarge,
     },
 });

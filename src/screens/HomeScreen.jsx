@@ -26,7 +26,6 @@ const HomeScreen = () => {
             </View>
             <Welcome />
             <Carousel />
-            <Headings />
             <ProductRow />
         </SafeAreaView>
     );
