@@ -4,7 +4,7 @@ import { SIZES } from '../../../constants';
 import ProductCardView from './ProductCardView';
 import Headings from '../home/Headings';
 
-const ProductRow = ({ productsList }) => {
+const ProductRow = ({ navigation }) => {
     const products = [
         {
             id: 1,
@@ -53,7 +53,7 @@ const ProductRow = ({ productsList }) => {
         },
     ];
     const renderItem = ({ item }) => (
-        <ProductCardView product={item} />
+        <ProductCardView product={item} navigation={navigation} />
     );
 
     return (

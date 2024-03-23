@@ -7,6 +7,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { BottomTabNavigator } from './src/navigation/BottomTabNavigator';
 import { theme } from './theme/theme';
 import { customTheme } from './constants/theme';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import StackNavigator from './src/navigation/StackNavigator';
+import BottomTabNavigation from './src/navigation/BottomTabNavigation';
+
+const Stack = createBottomTabNavigator();
 
 export default function App() {
   return (
@@ -14,8 +19,13 @@ export default function App() {
       <PaperProvider theme={customTheme}>
       <StatusBar style="auto" />
           <NavigationContainer>
-            <BottomTabNavigator />
-          </NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Bottom Navigation"
+          component={BottomTabNavigation}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
       </PaperProvider>
     </SafeAreaProvider>
   );
