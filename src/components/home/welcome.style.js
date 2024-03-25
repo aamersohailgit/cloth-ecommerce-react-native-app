@@ -3,7 +3,7 @@ import { COLORS, SIZES } from '../../../constants';
 
 const styles = StyleSheet.create({
     container: {
-        width: "10",
+        marginHorizontal: SIZES.small
     },
     welcomeText: (color, top) => ({
         fontFamily: "bold",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import { Card, Title, Paragraph, FAB, IconButton, MD3Colors } from 'react-native-paper';
+import { Card, Title, Paragraph, FAB, IconButton} from 'react-native-paper';
 
 const ProductCardView = ({ product }) => {
     return (
@@ -43,8 +43,7 @@ const styles = StyleSheet.create({
     },
     heartIcon: {
         position: 'absolute',
-        right: 5,
-        color: 'white',
+        right: 0,
     },
     fab: {
         position: 'absolute',

@@ -3,15 +3,19 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { COLORS, SIZES } from '../../../constants';
+import { IconButton, Title } from 'react-native-paper';
 
 const Headings = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.title}>New Arrivals</Text>
-                <TouchableOpacity>
-                    <Ionicons name="grid" size={24} color="black" />
-                </TouchableOpacity>
+                <Title>New Arrivals</Title>
+                <IconButton
+                        icon="view-grid"
+                        size={25}
+                        style={styles.heartIcon}
+                        onPress={() => console.log('Added to wishlist')}
+                    />
             </View>
         </View>
     );
@@ -24,11 +28,13 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        alignItems: 'center',
     },
-    title: {
-        fontSize: SIZES.xLarge -2,
-        fontWeight: 'bold',
-    },
+    // title: {
+    //     flex: 1,
+    //     fontSize: SIZES.xLarge -2,
+    //     fontWeight: 'bold',
+    // },
 });
 
 export default Headings;

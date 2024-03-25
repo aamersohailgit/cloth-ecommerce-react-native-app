@@ -3,6 +3,7 @@ import { View, FlatList, StyleSheet } from 'react-native';
 import ProductCardView from './ProductCardView';
 import { SIZES } from '../../../constants';
 import Headings from '../home/Headings';
+import { Text } from 'react-native-paper';
 
 const ProductRow = () => {
     const products = [

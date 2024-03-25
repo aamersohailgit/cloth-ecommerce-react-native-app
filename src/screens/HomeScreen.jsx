@@ -6,6 +6,7 @@ import { Headings, Welcome } from '../components';
 import homeStyles from './styles/home.style';
 import Carousel from '../components/Carousel';
 import ProductRow from '../components/products/ProductRow';
+import { IconButton } from 'react-native-paper';
 
 const HomeScreen = () => {
     return (
