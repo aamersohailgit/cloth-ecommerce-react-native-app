@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, View, Dimensions } from 'react-native';
-import { Appbar, Card, Title, Avatar, IconButton, Chip, useTheme, Text, Button } from 'react-native-paper';
+import { Appbar, Card, Title, Avatar, IconButton, Chip, useTheme, Text, Button, Icon } from 'react-native-paper';
 import { SIZES } from '../../constants';
 import StarRating from 'react-native-star-rating';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Ionicons, MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
 
 const ProductDetailsScreen = ({ navigation }) => {
  const { colors } = useTheme();
@@ -51,17 +53,52 @@ const ProductDetailsScreen = ({ navigation }) => {
                     emptyStar={'star-o'}
                     fullStar={'star'}
                     halfStar={'star-half-o'}
-                    starColor={colors.primary}
+                    fullStarColor='gold'
                     emptyStarColor={'gray'}
                 />
                 <Text style={styles.ratingText}>(4.9)</Text>
             </View>
             <View style={styles.rating}>
+                <View style={styles.quantity}>
                 <IconButton icon="minus" size={20} onPress={decrementQuantity} />
                 <Text>{quantity}</Text>
                 <IconButton icon="plus" size={20} onPress={incrementQuantity} />
+                </View>
             </View>
         </View>
+        <View style={styles.descriptionWrapper}>
+                <Text style={styles.description}>
+                    Description
+                </Text>
+                <Text style={styles.descriptionText}>
+                    Classic denim jeans with a relaxed fit and durable construction.
+                    Classic denim jeans with a relaxed fit and durable construction.
+                    Classic denim jeans with a relaxed fit and durable construction.
+                    Classic denim jeans with a relaxed fit and durable construction.
+                    Classic denim jeans with a relaxed fit and durable construction.
+                    Classic denim jeans with a relaxed fit and durable construction.
+                </Text>
+            </View>
+        {/* <View style={{marginTop: SIZES.xxLarge}}>
+            <View style={styles.location} backgroundColor= {colors.primaryContainer}>
+                <View style={{flexDirection:"row", padding:5}}>
+                    <Ionicons name="location-outline" size={20} color="black" />
+                    <Text>  Dallas</Text>
+                </View>
+                <View style={{flexDirection:"row", padding:5}}>
+                    <MaterialCommunityIcons name="truck-delivery-outline" size={20} color="black" />
+                    <Text>  Free Delivery  </Text>
+                </View>
+            </View>
+        </View> */}
+        {/* add Buy now button */}
+        <Button
+            icon="cart"
+            mode="contained"
+            buttonColor={colors.primary}
+            style={{ marginTop: 80, marginHorizontal:12 }}
+            onPress={() => console.log('Adding to cart')}
+        >Buy Now </Button>
       </View>
     </View>
  );
@@ -89,11 +126,9 @@ const styles = StyleSheet.create({
  },
  cardStyle: {
     flex: 1,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
  },
  details: {
-    padding: 16,
+    paddingTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -106,30 +141,56 @@ const styles = StyleSheet.create({
     flexDirection: 'row', // Align items in a row
     justifyContent: 'space-between', // Space items evenly across the container
     alignItems: 'center', // Align items vertically in the center
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingHorizontal: 12,
     marginHorizontal: 10,
-
  },
  ratingText: {
     fontSize: 16,
-    marginRight: 8,
+    marginRight: 10,
  },
  ratingRow: {
     paddingBottom:SIZES.small,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width:SIZES.width - 10,
+    width:SIZES.width,
     top: 5,
  },
  rating:{
-    top:SIZES.large,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginHorizontal: SIZES.large
- }
+    marginHorizontal: SIZES.small
+ },
+ quantity:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+ },
+    descriptionWrapper: {
+        marginTop: SIZES.medium -2,
+        marginHorizontal: SIZES.large
+    },
+    description: {
+        fontFamily: 'medium',
+        fontSize: SIZES.large,
+    },
+    descriptionText:{
+        fontFamily: 'regular',
+        fontSize: SIZES.small,
+        textAlign: 'justify',
+        marginTop: 5,
+    },
+    location: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        // marginHorizontal: SIZES.large,
+        // marginTop: SIZES.small,
+        // backgroundColor: colors.primary,
+        paddingTop: 5,
+        borderRadius: SIZES.large,
+    },
 });
 
 export default ProductDetailsScreen;
