@@ -1,10 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import { Card, Title, Paragraph, FAB, IconButton} from 'react-native-paper';
 
 const ProductCardView = ({ product }) => {
+    const navigation = useNavigation();
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('ProductDetails')}>
             <Card style={styles.container}>
                 <View style={styles.coverContainer}>
                     <Card.Cover source={{uri: product.image}} />
