@@ -1,7 +1,6 @@
-import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import { Card, Title, Paragraph, Text, Button, Icon, FAB } from 'react-native-paper';
+import { Card, Title, Paragraph, FAB, IconButton, MD3Colors } from 'react-native-paper';
 
 const ProductCardView = ({ product }) => {
     return (
@@ -9,7 +8,13 @@ const ProductCardView = ({ product }) => {
             <Card style={styles.container}>
                 <View style={styles.coverContainer}>
                     <Card.Cover source={{uri: product.image}} />
-                    <Ionicons name="heart" size={24} color="white" style={styles.heartIcon} />
+                    <IconButton
+                        icon="heart"
+                        size={26}
+                        iconColor="white"
+                        style={styles.heartIcon}
+                        onPress={() => console.log('Added to wishlist')}
+                    />
                 </View>
                 <Card.Content>
                     <Title>{product.name}</Title>
@@ -38,8 +43,8 @@ const styles = StyleSheet.create({
     },
     heartIcon: {
         position: 'absolute',
-        top: 10, // Adjust as needed
-        right: 10, // Adjust as needed
+        right: 5,
+        color: 'white',
     },
     fab: {
         position: 'absolute',
