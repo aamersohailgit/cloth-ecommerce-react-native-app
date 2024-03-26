@@ -31,9 +31,9 @@ const ProductDetailsScreen = ({ navigation }) => {
         <Appbar.Action
           icon="arrow-left"
           onPress={() => navigation.goBack()}
-          color={colors.primary}
+          color="white"
         />
-        <Appbar.Action icon="heart" color={colors.primary} onPress={() => {}} />
+        <Appbar.Action icon="heart" color="white" onPress={() => {}} />
       </View>
       <Image source={{ uri: "https://source.unsplash.com/1024x768/?Islamic-girl" }}
         style={[styles.image, { width: width }]}
@@ -92,13 +92,21 @@ const ProductDetailsScreen = ({ navigation }) => {
             </View>
         </View> */}
         {/* add Buy now button */}
-        <Button
-            icon="cart"
-            mode="contained"
-            buttonColor={colors.primary}
-            style={{ marginTop: 80, marginHorizontal:12 }}
-            onPress={() => console.log('Adding to cart')}
-        >Buy Now </Button>
+        <View style={{flexDirection:"row", justifyContent: 'space-between', marginHorizontal: 12}}>
+            <Button
+                icon="cart"
+                mode="outlined"
+                style={{ flex: 1, marginTop: 80, marginRight: 6 }}
+                onPress={() => console.log('Adding to cart')}
+            > Add to Cart </Button>
+            <Button
+                icon="shopping"
+                mode="contained"
+                buttonColor={colors.primary}
+                style={{ flex: 1, marginTop: 80, marginLeft: 6 }}
+                onPress={() => console.log('Buy Now')}
+            >Buy Now </Button>
+        </View>
       </View>
     </View>
  );
