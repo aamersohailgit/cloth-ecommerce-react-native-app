@@ -25,9 +25,11 @@ const HomeScreen = () => {
                     </View>
                 </View>
             </View>
-            <Welcome />
-            <Carousel />
-            <ProductRow />
+            <ScrollView>
+                <Welcome />
+                <Carousel />
+                <ProductRow />
+            </ScrollView>
         </SafeAreaView>
     );
 }

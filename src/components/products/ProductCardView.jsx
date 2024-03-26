@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import { Card, Title, Paragraph, FAB, IconButton} from 'react-native-paper';
+import { Card, Title, Paragraph, FAB, IconButton, Text, Chip} from 'react-native-paper';
 
 const ProductCardView = ({ product }) => {
     const navigation = useNavigation();
@@ -9,7 +9,7 @@ const ProductCardView = ({ product }) => {
         <TouchableOpacity onPress={() => navigation.navigate('ProductDetails')}>
             <Card style={styles.container}>
                 <View style={styles.coverContainer}>
-                    <Card.Cover source={{uri: product.image}} />
+                    <Card.Cover source={{uri: product.images}} />
                     <IconButton
                         icon="heart"
                         size={26}
@@ -19,8 +19,8 @@ const ProductCardView = ({ product }) => {
                     />
                 </View>
                 <Card.Content>
-                    <Title>{product.name}</Title>
-                    <Paragraph>{product.currency}{product.price}</Paragraph>
+                    <Text variant='titleSmall'>{product.name}</Text>
+                    <Paragraph>${product.price}</Paragraph>
                     <FAB
                         icon="plus"
                         style={styles.fab}

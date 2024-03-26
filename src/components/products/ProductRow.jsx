@@ -3,7 +3,9 @@ import { View, FlatList, StyleSheet } from 'react-native';
 import ProductCardView from './ProductCardView';
 import { SIZES } from '../../../constants';
 import Headings from '../home/Headings';
-import { Text } from 'react-native-paper';
+import useFetch from '../../hook/useFetch';
+import { isLoading } from 'expo-font';
+import { ActivityIndicator } from 'react-native-paper';
 
 const ProductRow = () => {
     const products = [
@@ -53,6 +55,8 @@ const ProductRow = () => {
         },
     ];
 
+    const {data, loading, error, refresh} = useFetch();
+
     const renderItem = ({ item }) => (
         <ProductCardView product={item} />
     );
@@ -61,12 +65,14 @@ const ProductRow = () => {
         <View style={styles.container}>
             <Headings />
             <View style={{ padding: SIZES.xSmall, marginTop: SIZES.medium}}>
-                <FlatList
-                    data={products}
+                {loading ? (<ActivityIndicator />) : error ? (<Text>Something went wrong</Text>) : (<FlatList
+                    data={data}
+                    keyExtractor={(item) => item.id}
                     renderItem={renderItem}
                     horizontal
                     contentContainerStyle={{columnGap:SIZES.medium}}
-                />
+                />)
+                }
             </View>
         </View>
     );
