@@ -9,7 +9,8 @@ const useFetch = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:8000/products/');
+            const apiUrl = process.env.EXPO_PUBLIC_API_URL_DEV;
+            const response = await axios.get(`${apiUrl}/products/`);
             setData(response.data);
             setLoading(false);
         } catch (error) {

@@ -5,7 +5,7 @@ import { SIZES } from '../../../constants';
 import Headings from '../home/Headings';
 import useFetch from '../../hook/useFetch';
 import { isLoading } from 'expo-font';
-import { ActivityIndicator } from 'react-native-paper';
+import { ActivityIndicator, Text } from 'react-native-paper';
 
 const ProductRow = () => {
     const products = [
@@ -56,7 +56,6 @@ const ProductRow = () => {
     ];
 
     const {data, loading, error, refresh} = useFetch();
-
     const renderItem = ({ item }) => (
         <ProductCardView product={item} />
     );
