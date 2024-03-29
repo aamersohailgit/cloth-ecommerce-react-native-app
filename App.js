@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigation from './src/navigation/BottomTabNavigation';
 import { CartScreen, NewArrivalsScreen, ProductDetailsScreen } from './src/screens';
 import { LogBox } from 'react-native';
+import { CartProvider } from './src/context/CartContext';
 
 LogBox.ignoreLogs(["ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from 'deprecated-react-native-prop-types'."]);
 
@@ -33,6 +34,7 @@ export default function App() {
   }
 
   return (
+    <CartProvider>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Bottom Navigation"
@@ -53,6 +55,7 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </CartProvider>
   );
 }
 

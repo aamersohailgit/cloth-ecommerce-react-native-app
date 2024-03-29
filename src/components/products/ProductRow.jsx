@@ -6,12 +6,13 @@ import Headings from '../home/Headings';
 import useFetch from '../../hook/useFetch';
 import { isLoading } from 'expo-font';
 import { ActivityIndicator, Text } from 'react-native-paper';
+import { CartProvider } from '../../context/CartContext';
 
 const ProductRow = () => {
 
     const {data, loading, error, refresh} = useFetch();
     const renderItem = ({ item }) => (
-        <ProductCardView product={item} />
+            <ProductCardView product={item} />
     );
 
     return (

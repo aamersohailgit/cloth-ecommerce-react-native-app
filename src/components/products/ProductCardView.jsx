@@ -1,35 +1,37 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import { Card, Title, Paragraph, FAB, IconButton, Text, Chip} from 'react-native-paper';
+import { CartContext } from '../../context/CartContext';
 
 const ProductCardView = ({ product }) => {
     const navigation = useNavigation();
+    const { incrementCartCount } = useContext(CartContext);
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('ProductDetails', {product})}>
-            <Card style={styles.container}>
+            <Card style={styles.container} onPress={() => navigation.navigate('ProductDetails', {product})}>
                 <View style={styles.coverContainer}>
                     <Card.Cover source={{uri: product.images}} />
                     <IconButton
                         icon="heart"
-                        size={26}
+                        size={15}
                         iconColor="white"
                         style={styles.heartIcon}
+                        mode='contained'
                         onPress={() => console.log('Added to wishlist')}
                     />
                 </View>
                 <Card.Content>
-                    <Text variant='titleSmall'>{product.name}</Text>
-                    <Paragraph>${product.price}</Paragraph>
-                    <FAB
-                        icon="plus"
-                        style={styles.fab}
-                        onPress={() => console.log('Pressed')}
-                        size="small"
-                    />
+                    <Text style={{paddingTop:5}} variant='titleMedium' numberOfLines={1}>{product.name}</Text>
+                    <View style={{flexDirection:"row", justifyContent:"space-between", paddingTop:5}}>
+                        <Text variant='titleLarge'>${product.price}</Text>
+                        <FAB
+                            icon="plus"
+                            onPress={incrementCartCount}
+                            size="small"
+                        />
+                    </View>
                 </Card.Content>
             </Card>
-        </TouchableOpacity>
     );
 };
 
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
     },
     fab: {
         position: 'absolute',
-        margin: 10,
+        // margin: 10,
         right: 0,
         bottom: 0,
     },
