@@ -5,9 +5,12 @@ import { SIZES } from '../../constants';
 import StarRating from 'react-native-star-rating';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons, MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
 
 const ProductDetailsScreen = ({ navigation }) => {
- const { colors } = useTheme();
+const route = useRoute();
+const {product} = route.params;
+const { colors } = useTheme();
  const { width } = Dimensions.get('window');
  const [rating, setRating] = useState(4.5);
  const [quantity, setQuantity] = useState(1);
@@ -29,19 +32,18 @@ const ProductDetailsScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.upperRow}>
         <Appbar.Action
-          icon="arrow-left"
+          icon="arrow-left-circle"
           onPress={() => navigation.goBack()}
-          color="white"
         />
-        <Appbar.Action icon="heart" color="white" onPress={() => {}} />
+        <Appbar.Action icon="heart-circle"  onPress={() => {}} />
       </View>
-      <Image source={{ uri: "https://source.unsplash.com/1024x768/?Islamic-girl" }}
+      <Image source={{ uri: product.images }}
         style={[styles.image, { width: width }]}
       />
       <View style={styles.cardStyle}>
         <View style={styles.details}>
-          <Title style={styles.title}>Denim Jeans</Title>
-          <Chip style={styles.chip}>$ 29.99</Chip>
+          <Title style={styles.title}>{product.name}</Title>
+          <Chip style={styles.chip}>$ {product.price}</Chip>
         </View>
         <View style={styles.ratingRow}>
             <View style={styles.rating}>
@@ -71,27 +73,9 @@ const ProductDetailsScreen = ({ navigation }) => {
                     Description
                 </Text>
                 <Text style={styles.descriptionText}>
-                    Classic denim jeans with a relaxed fit and durable construction.
-                    Classic denim jeans with a relaxed fit and durable construction.
-                    Classic denim jeans with a relaxed fit and durable construction.
-                    Classic denim jeans with a relaxed fit and durable construction.
-                    Classic denim jeans with a relaxed fit and durable construction.
-                    Classic denim jeans with a relaxed fit and durable construction.
+                    {product.description}
                 </Text>
             </View>
-        {/* <View style={{marginTop: SIZES.xxLarge}}>
-            <View style={styles.location} backgroundColor= {colors.primaryContainer}>
-                <View style={{flexDirection:"row", padding:5}}>
-                    <Ionicons name="location-outline" size={20} color="black" />
-                    <Text>  Dallas</Text>
-                </View>
-                <View style={{flexDirection:"row", padding:5}}>
-                    <MaterialCommunityIcons name="truck-delivery-outline" size={20} color="black" />
-                    <Text>  Free Delivery  </Text>
-                </View>
-            </View>
-        </View> */}
-        {/* add Buy now button */}
         <View style={{flexDirection:"row", justifyContent: 'space-between', marginHorizontal: 12}}>
             <Button
                 icon="cart"
