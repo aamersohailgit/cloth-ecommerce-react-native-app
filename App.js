@@ -4,8 +4,9 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigation from './src/navigation/BottomTabNavigation';
-import { CartScreen, ProductDetailsScreen } from './src/screens';
+import { CartScreen, NewArrivalsScreen, ProductDetailsScreen } from './src/screens';
 import { LogBox } from 'react-native';
+import { CartProvider } from './src/context/CartContext';
 
 LogBox.ignoreLogs(["ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from 'deprecated-react-native-prop-types'."]);
 
@@ -33,6 +34,7 @@ export default function App() {
   }
 
   return (
+    <CartProvider>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Bottom Navigation"
@@ -47,8 +49,13 @@ export default function App() {
           component={ProductDetailsScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="NewArrivals"
+          component={NewArrivalsScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
+    </CartProvider>
   );
 }
 

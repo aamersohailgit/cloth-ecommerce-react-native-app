@@ -4,8 +4,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { COLORS, SIZES } from '../../../constants';
 import { IconButton, Title } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
-const Headings = () => {
+const Headings = ({data}) => {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -14,7 +16,7 @@ const Headings = () => {
                         icon="view-grid"
                         size={25}
                         style={styles.heartIcon}
-                        onPress={() => console.log('Added to wishlist')}
+                        onPress={() => navigation.navigate("NewArrivals", {data})}
                     />
             </View>
         </View>

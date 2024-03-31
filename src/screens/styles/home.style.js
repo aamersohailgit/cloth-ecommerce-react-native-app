@@ -8,7 +8,7 @@ const homeStyle = StyleSheet.create({
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // Dynamic padding for Android
     },
     appBarWrapper: {
-        marginHorizontal:22,
+        marginHorizontal:12,
         marginTop: SIZES.small
     },
     appBar: {
