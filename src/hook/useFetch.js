@@ -9,7 +9,7 @@ const useFetch = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const apiUrl = process.env.EXPO_PUBLIC_API_URL_DEV;
+            const apiUrl = "http://27.33.175.9:8000";
             const response = await axios.get(`${apiUrl}/products/`);
             setData(response.data);
             setLoading(false);
