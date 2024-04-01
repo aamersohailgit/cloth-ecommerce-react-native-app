@@ -4,6 +4,7 @@ import {CartScreen, HomeScreen, ProfileScreen, SearchScreen, SettingsScreen} fro
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useTheme } from "react-native-paper";
 import { COLORS } from "../../constants";
+import { useCart } from "../context/CartContext";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,6 +24,7 @@ const screenOptions = {
 
 const BottomTabNavigation = () => {
     const theme = useTheme();
+    const { cartCount } = useCart();
     return (
         <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen name="Home" component={HomeScreen} options={{
@@ -32,7 +34,7 @@ const BottomTabNavigation = () => {
             tabBarIcon:({focused})=>{return <Ionicons name={focused ? "search-sharp": "search"} size={25} />},
         }} />
         <Tab.Screen name="Cart" component={CartScreen} options={{
-            tabBarIcon:({focused})=>{return <Ionicons name={focused ? "cart" : "cart-outline"} size={25} color={focused ? theme.colors.primary : theme.colors.secondary} />},
+            tabBarBadge: cartCount > 0 ? cartCount : null,tabBarIcon:({focused})=>{return <Ionicons name={focused ? "cart" : "cart-outline"} size={25} color={focused ? theme.colors.primary : theme.colors.secondary} />},
         }} />
         <Tab.Screen name="Settings" component={SettingsScreen} options={{
             tabBarIcon:({focused})=>{return <Ionicons name={focused ? "settings" : "settings-outline"} size={25} color={focused ? theme.colors.primary : theme.colors.secondary} />},
