@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import { Card, Title, Paragraph, FAB, IconButton, Text, Chip} from 'react-native-paper';
+import { Card, Title, Paragraph, FAB, IconButton, Text, Chip, Button} from 'react-native-paper';
 import { CartContext } from '../../context/CartContext';
 
 const ProductCardView = ({ product }) => {
@@ -24,11 +24,11 @@ const ProductCardView = ({ product }) => {
                     <Text style={{paddingTop:5}} variant='titleMedium' numberOfLines={1}>{product.name}</Text>
                     <View style={{flexDirection:"row", justifyContent:"space-between", paddingTop:5}}>
                         <Text variant='titleLarge'>${product.price}</Text>
-                        <FAB
+                        {/* <FAB
                             icon="plus"
                             onPress={incrementCartCount}
                             size="small"
-                        />
+                        /> */}
                     </View>
                 </Card.Content>
             </Card>
